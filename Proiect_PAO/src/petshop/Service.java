@@ -1,12 +1,13 @@
 package petshop;
 import java.util.*; 
 
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 import java.io.*; 
 import java.lang.*; 
 class Sortbyroll implements Comparator<Employee> 
 { 
-    // Used for sorting in ascending order of 
-    // roll number 
+
     public int compare(Employee a, Employee b) 
     { 
         int l1 = a.GetName().length(); 
@@ -22,14 +23,12 @@ class Sortbyroll implements Comparator<Employee>
             } 
         } 
   
-        // Edge case for strings like 
-        // String 1="Geeks" and String 2="Geeksforgeeks" 
+        
         if (l1 != l2) { 
             return l1 - l2; 
         } 
   
-        // If none of the above conditions is true, 
-        // it implies both the strings are equal 
+        
         else { 
             return 0; 
         } 
@@ -37,13 +36,17 @@ class Sortbyroll implements Comparator<Employee>
 } 
 
 public class Service {
+	String dataAudit;
     List<Employee> e = new ArrayList<Employee>(); 
+    ServiceAudir sa = new ServiceAudir();
 	public void Request (int i)
 	{
 		Scanner scanner = new Scanner(System. in);
 		if(i == 1) {
 			System.out.println("Introduceti numele noului angajat:");
-			
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Introducerea unui nou angajat ; " + date + "\n";
 	        String inputString = scanner.nextLine();
 	        System.out.println("Introduceti functia noului angajat(1-ZooKeeper, 2-Vet, 3-AuxiliaryEmployee):");
 	        int job = scanner.nextInt();
@@ -58,6 +61,7 @@ public class Service {
 	        	Vet a = new Vet(inputString, age);
 	        	e.add(a);
 	        	//e.get(0).Info(); 
+	        	//
 	        }
 	        if(job == 3) {
 	        	AuxiliaryEmployees a = new AuxiliaryEmployees(inputString, age);
@@ -66,11 +70,17 @@ public class Service {
 	        }
 	        Collections.sort(e, new Sortbyroll()); 
 		}else if(i == 5) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Afisarea informatiilor ; " + date + "\n";
             for(int j=0; j<e.size();j++)  
             {  
             	e.get(j).Info();     
             }  
         }else if(i == 2) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Cautarea unui angajat ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului pe care il cautati:");
         	String inputName = scanner.nextLine();
             for(int j=0; j<e.size();j++)  
@@ -84,6 +94,9 @@ public class Service {
             }
          
         }else if(i == 9) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Adaugarea unui animal in grija unui angajat ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului in grija caruia vreti sa adaugati un animal:");
         	String inputName = scanner.nextLine();
         	int j;
@@ -126,6 +139,9 @@ public class Service {
         		e.get(j).AddAnimal(an);
         	}
         }if(i == 3) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Afisarea informatiilor despre un angajat ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului ale carui animale vreti sa le afisati:");
         	String inputName = scanner.nextLine();
         	int j;
@@ -140,6 +156,9 @@ public class Service {
             }
             e.get(j).PrintAnimal(); 
         }if(i == 4) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Concedierea unui angajat ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului pe care vreti sa-l concediati:");
            	int j;
         	String inputName = scanner.nextLine();
@@ -154,12 +173,18 @@ public class Service {
             }
             e.remove(j);
         }if(i == 6) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Salariul unui angajat ; " + date + "\n";
             for(int j=0; j<e.size();j++)  
             {  
             	System.out.println("Nume: " + e.get(j).GetName());
             	System.out.println("Salariu: " + e.get(j).SalaryCalculator());
             }
         }if(i == 7) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Mutarea unui animal din grija unui angajat ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului de la care vreti sa mutati animalul: ");
         	String inputName1 = scanner.nextLine();
         	System.out.println("Introduceti numele angajatului la care vreti sa mutati animalul: ");
@@ -204,6 +229,9 @@ public class Service {
            
             
         }if(i == 8) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Stergerea unui animal ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului de la care vreti stergeti animalul: ");
         	String inputName = scanner.nextLine();
         	int j;
@@ -221,6 +249,9 @@ public class Service {
         	e.get(j).DeleteAnimal(AName);
             
         }if(i == 10) {
+		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date date = new Date();  
+			dataAudit +=  "Interactiunea cu animalele ; " + date + "\n";
         	System.out.println("Introduceti numele angajatului cu ale carui animale vreti sa interactionati: ");
         	String inputName = scanner.nextLine();
         	int j;
@@ -236,4 +267,56 @@ public class Service {
             e.get(j).Interact();
         }
 	}
+	public void addEmployee( String name, int type,  int age) {
+
+        if(type == 1) {
+        	ZooKeeper a = new ZooKeeper(name, age, 0);
+        	e.add(a);
+        	//e.get(0).Info(); 
+        }
+        if(type == 2) {
+        	Vet a = new Vet(name, age);
+        	e.add(a);
+        	//e.get(0).Info(); 
+        }
+        if(type == 3) {
+        	AuxiliaryEmployees a = new AuxiliaryEmployees(name, age);
+        	e.add(a);
+        	//e.get(0).Info(); 
+        }
+	}
+	public void addAnimal( String name, int age, String zooKeeperName, int type) {
+
+    	int j;
+        for( j=0; j<e.size();j++)  
+        {  
+        	if((e.get(j).GetName()).equals(zooKeeperName)) {
+        		{
+        			//e.get(j).Info(); 
+        			break;
+        		}
+        	}
+        }
+        if(type == 1) {
+    		Animal an = new Monkey(name, age, "banana");
+    		e.get(j).AddAnimal(an); 
+    		//System.out.println(name + " " + age + " banana");
+        }
+        if(type == 2) {
+    		Animal an = new Parrot(name, age, "seminte");
+    		e.get(j).AddAnimal(an); 
+        }
+        if(type == 3) {
+    		Animal an = new Lion(name, age, "carne");
+    		e.get(j).AddAnimal(an); 
+        }
+	}
+	public List<Employee> getList(){
+		return e;
+	}
+	public void callAudit() {
+		
+		sa.WriteToAudit(dataAudit);
+	}
 }
+
