@@ -1,10 +1,11 @@
 package petshop;
 
 import java.util.Scanner;
-
+import java.io.*;
 public class Main {
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException{
 		Service s = new Service();
+		Setup set = Setup.getInstance();
 		System.out.println("Apasati 1 pentru a introduce un nou angajat al gradinii zoologice");
 		System.out.println("Apasati 2 pentru a afla informatii despre un angajat(detaliat)");
 		System.out.println("Apasati 3 pentru a afla informatii despre animalele de care are grija un angajat");
@@ -17,11 +18,14 @@ public class Main {
 		System.out.println("Apasati 10 pentru a interactiona cu animalele unui angajat");//
 		System.out.println("Apasati 0 pentru a iesi");
 		Scanner keyboard = new Scanner(System.in);
-		
+		set.AddUserCSV(s,"Employees.csv");
+		set.AddAnimalCSV(s, "Monkey.csv", "Parrot.csv", "Lion.csv");
 		int x = keyboard.nextInt();
 		while(x != 0) {
 			s.Request(x);
 			x = keyboard.nextInt();
 		}
+		set.WriteCSV(s);
+		s.callAudit();
 	}
 }

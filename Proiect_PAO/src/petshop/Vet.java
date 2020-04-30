@@ -22,4 +22,8 @@ public class Vet extends Employee{
 		super.Info();
 		
 	}
+	@Override
+	public int GetJob() {
+		return 2;
+	}
 }

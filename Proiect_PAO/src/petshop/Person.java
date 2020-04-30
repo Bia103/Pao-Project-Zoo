@@ -15,4 +15,7 @@ public class Person {
 	public String GetN() {
 		return name;
 	}
+	public int GetA() {
+		return age;
+	}
 }

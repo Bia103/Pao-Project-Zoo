@@ -31,6 +31,13 @@ public class Employee extends Person {
 		String s = super.GetN();
 		return s;
 	}
+	public int GetAge() {
+		int s = super.GetA();
+		return s;
+	}
+	public int GetJob() {
+		return 0;
+	}
 	public void AddAnimal(Animal an) {
 		System.out.println("This person is not a zookeeper");
 	}
@@ -50,5 +57,8 @@ public class Employee extends Person {
 	}
 	public void Interact() {
 		System.out.println("This person is not a zookeeper");
+	}
+	public int GetNrAnimals() {
+		return 0;
 	}
 }

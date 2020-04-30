@@ -16,4 +16,8 @@ public class AuxiliaryEmployees extends Employee{
 		super.Info();
 		
 	}
+	@Override
+	public int GetJob() {
+		return 3;
+	}
 }

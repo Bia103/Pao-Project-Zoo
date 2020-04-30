@@ -31,6 +31,7 @@ public class ZooKeeper extends Employee{
 	}
 	@Override
 	public void AddAnimal(Animal an) {
+		//System.out.println("da");
 		ani.add(an);
 	}	
 	@Override
@@ -72,7 +73,13 @@ public class ZooKeeper extends Employee{
 		for(Animal item : ani){
 		    	item.Interaction();
 		    }
-		
-
+	}
+	@Override
+	public int GetJob() {
+		return 1;
+	}
+	@Override
+	public int GetNrAnimals() {
+		return ani.size() + 1;
 	}
 }
